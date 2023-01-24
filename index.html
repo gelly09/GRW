@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Barra di ricerca</title>
+  </head>
+  <body>
+    <input type="text" id="search-input" placeholder="Inserisci una parola">
+    <button id="search-button">Cerca</button>
+    <div id="result"></div>
+    <script>
+      var searchButton = document.getElementById("search-button");
+      var searchInput = document.getElementById("search-input");
+      var result = document.getElementById("result");
+      
+      searchButton.addEventListener("click", function() {
+        var inputValue = searchInput.value;
+        // In questo punto si potrebbe utilizzare una chiamata API o qualsiasi altra logica per trovare parole simili o legate alla parola inserita
+        result.innerHTML = "Parole simili o legate a " + inputValue + ": parole1, parole2, parole3";
+      });
+    </script>
+  </body>
+</html>
