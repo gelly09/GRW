@@ -1,0 +1,28 @@
+$(document).ready(function() {
+  $("#search-button").click(function() {
+    var inputValue = $("#search-input").val();
+    var url = "https://api.openai.com/v1/engines/davinci-codex/completions";
+    var apiKey = "PUT_YOUR_API_KEY_HERE"; // Sostituire con la tua chiave API OpenAI
+    var prompt = "Mostra parole simili a " + inputValue;
+    
+    $.ajax({
+      type: "POST",
+      url: url,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey
+      },
+      data: JSON.stringify({
+        prompt: prompt,
+        max_tokens: 10
+      }),
+      success: function(result) {
+        var words = result.choices[0].text.split(" ");
+        $("#result").html("Parole simili o legate a " + inputValue + ": " + words.join(", "));
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
+});
